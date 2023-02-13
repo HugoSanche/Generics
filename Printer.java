@@ -1,3 +1,5 @@
+
+
 public class Printer <T> {
 
     T thingsToPrint;
@@ -6,6 +8,7 @@ public class Printer <T> {
         this.thingsToPrint=thingsToPrint;
     }
     public void Print(){
+        
         System.out.println(thingsToPrint);
     } 
 }
