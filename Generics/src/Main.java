@@ -20,10 +20,12 @@ public class Main {
         SportsTeam america1=new SportsTeam("America");
         scoresResults(cruzAzul1,5,america1,2);
 
+
+
         //Using generics
-        Team<FootBallPlayer> cruzAzul= new Team<>("Cruz Azul FC");
-        Team<FootBallPlayer> america=new Team<>("America");
-        Team<F1Player> redBull=new Team<>("RedBull");
+        Team<FootBallPlayer, String> cruzAzul= new Team<>("Cruz Azul FC","Ciudad de Mexico, Centre Mexico, in México");
+        Team<FootBallPlayer, Affiliation> america=new Team<>("America");
+
         scoresResults(cruzAzul,5,america,2);
 
         var victor=new FootBallPlayer("Victor Sanchez","Right");
@@ -36,7 +38,8 @@ public class Main {
         //cruzAzul.addTeamMember(hugo); //error its baseball player
         cruzAzul.listTeamMembers();
 
-
+        var aus=new Affiliation("City","Oracle Red Bull Racing","Austria");
+        Team<F1Player, Affiliation> redBull=new Team<>("RedBull",aus);
         var sergio=new F1Player("Sergio Perez", "Pilot one");
         redBull.addTeamMember(sergio);
         redBull.listTeamMembers();

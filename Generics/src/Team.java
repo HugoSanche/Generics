@@ -21,16 +21,30 @@ import java.util.List;
 //This extends keyword doesn't have the same meaning as extends, when it's used in a class declaration
 //Nota.- This isn't saying our type T extends Player, although it could
 //this is saying the parameterized type T, has to be a Player, or a subtype of Player
-public class Team<T extends Player> {
+
+record Affiliation(String name, String type, String countryCode){
+    @Override
+    public String toString() {
+        return name +"( "+type+" in "+countryCode+")";
+    }
+}
+public class Team<T extends Player, S> {
     private String teamName;
     List<T> teamMembers= new ArrayList<>();
     private int totalWins=0;
     private int totalLosses=0;
     private int totalTies=0;
+    private S affiliation;
 
     public Team(String teamName) {
         this.teamName = teamName;
     }
+    public Team(String teamName, S affiliation) {
+        this.teamName = teamName;
+        this.affiliation=affiliation;
+    }
+
+
     public void addTeamMember(T t) {
         if (!teamMembers.contains(t)) {
             teamMembers.add(t);
@@ -38,6 +52,7 @@ public class Team<T extends Player> {
     }
     public void listTeamMembers(){
             System.out.println(teamName+" Lista:");
+            System.out.println(affiliation==null ? "":" AFFILIATION: "+affiliation);
             //System.out.println(teamMembers);
             for(T t:teamMembers){
                 System.out.println(t.name());
