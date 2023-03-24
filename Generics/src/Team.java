@@ -13,9 +13,15 @@ import java.util.List;
 // * E for Element (used extensively by the java Collection Framework)
 // * K for key (used for mapped types)
 // * N for number
+// * T for type
 // * V for Value
 // * S,U,V etc for 2nd, 3rd, 4th types
-public class Team<T> {
+
+//****************************************************************************
+//This extends keyword doesn't have the same meaning as extends, when it's used in a class declaration
+//Nota.- This isn't saying our type T extends Player, although it could
+//this is saying the parameterized type T, has to be a Player, or a subtype of Player
+public class Team<T extends Player> {
     private String teamName;
     List<T> teamMembers= new ArrayList<>();
     private int totalWins=0;
@@ -32,7 +38,10 @@ public class Team<T> {
     }
     public void listTeamMembers(){
             System.out.println(teamName+" Lista:");
-            System.out.println(teamMembers);
+            //System.out.println(teamMembers);
+            for(T t:teamMembers){
+                System.out.println(t.name());
+            }
         }
         public int raiting(){
             return (totalLosses*2)+totalTies+1;

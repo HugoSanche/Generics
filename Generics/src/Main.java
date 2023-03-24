@@ -1,6 +1,9 @@
-interface Player{}
+interface Player{
+    String name();
+}
 record BaseBallPlayer(String name, String Position) implements Player{}
 record FootBallPlayer(String name, String Position) implements Player{}
+record F1Player(String name, String Position) implements  Player{}
 public class Main {
     public static void main(String[] args) {
         BaseBallTeam lakers= new BaseBallTeam("Los Angeles Lakers");
@@ -20,14 +23,23 @@ public class Main {
         //Using generics
         Team<FootBallPlayer> cruzAzul= new Team<>("Cruz Azul FC");
         Team<FootBallPlayer> america=new Team<>("America");
+        Team<F1Player> redBull=new Team<>("RedBull");
         scoresResults(cruzAzul,5,america,2);
 
         var victor=new FootBallPlayer("Victor Sanchez","Right");
         var pedro=new FootBallPlayer("Pedro Paramo","Left");
+
         cruzAzul.addTeamMember(victor);
         cruzAzul.addTeamMember(pedro);
+        //cruzAzul.addTeamMember(text2);
+
         //cruzAzul.addTeamMember(hugo); //error its baseball player
         cruzAzul.listTeamMembers();
+
+
+        var sergio=new F1Player("Sergio Perez", "Pilot one");
+        redBull.addTeamMember(sergio);
+        redBull.listTeamMembers();
 
 
     }
