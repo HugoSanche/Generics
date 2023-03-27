@@ -2,19 +2,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Layer <T extends Mappable> {
-    private List<T> lista =new ArrayList<>();
+    private List<T> lista;
 
-    public Layer(List<T> lista) {
-        this.lista = lista;
+    public Layer(T[] lista) {
+        this.lista = new ArrayList<T>(List.of(lista));
     }
+public void addElements(T... elements){
+        lista.addAll(List.of(elements));
+}
 
     public void setLista(List<T> lista) {
         this.lista = lista;
     }
 
     public void renderLayer(){
-        for (var x:lista){
-               System.out.println(x.getRender());
+        for (T element:lista){
+               element.getRender();
         }
     }
 }
