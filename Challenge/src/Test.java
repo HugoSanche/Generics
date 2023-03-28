@@ -24,8 +24,9 @@ public class Test {
         System.out.println("*************************");
         //SECOND WAY
         for (int i=0; i<locations.length; i++ ){
+
             for (int j=0; j<locations.length; j++){
-                System.out.print(locations[j]+" * ");
+                System.out.print(locations[i]+" & "+locations[j]+" * ");
             }
             System.out.println();
         }
